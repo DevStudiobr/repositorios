@@ -11,11 +11,10 @@ def obter_preco_shopee(url):
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
-        # Parsear o HTML da página
-        soup = BeautifulSoup(response.content, "lxml")
+        # Parsear o HTML da página usando o parser nativo
+        soup = BeautifulSoup(response.content, "html.parser")
         
         # Encontra o elemento do preço (ajuste isso com base no HTML da página)
-        # Exemplo: Vamos supor que o preço está num span com classe "pdp-price"
         preco_elemento = soup.find("span", class_="pdp-price")
         
         if preco_elemento:
